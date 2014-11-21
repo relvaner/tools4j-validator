@@ -1,3 +1,24 @@
+Overview
+========
+
+| Validator | Constraints |
+| --------- | ----------- |
+| StringValidator     | NotNull, Null, NotEmpty, Empty, Pattern, Min, Max, Size |
+| EmailValidator      | NotNull, Null, NotEmpty, Empty, Pattern, Min, Max, Size |
+| PickListValidator   | NotNull, Null, NotEmpty, Empty, Pattern, Min, Max, Size, List |
+| DateValidator       | NotNull, Null, Pattern, Valid, Past, Future |
+| BigDecimalValidator | NotNull, Null, Min, Max, Range |
+| BigIntegerValidator | NotNull, Null, Min, Max, Range |
+| DoubleValidator     | NotNull, Null, Min, Max, Range |
+| FloatValidator      | NotNull, Null, Min, Max, Range |
+| LongValidator       | NotNull, Null, Min, Max, Range |
+| IntegerValidator    | NotNull, Null, Min, Max, Range |
+| ShortValidator      | NotNull, Null, Min, Max, Range |
+| ByteValidator       | NotNull, Null, Min, Max, Range |
+| BooleanValidator    | NotNull, Null, AssertFalse, AssertTrue |
+
+Table 1: Overview of validators and possible constraints.
+
 Examples
 ========
 <b>Example of a StringValidator:</b>
