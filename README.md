@@ -1,7 +1,7 @@
 Introduction
 ============
 
-The framework is used for checking of data for correctness. Specifically data can be checked for correctness by means of regular expression and the value range or field length for strings. Additionally own validators can be written that can then define additional verifiable criteria (Derived classes of type Validator <T>). Validation is a maximum of three steps (Transformation → Validation → BusinessRule). When passing a string, the string is first transformed to the desired data type. During the transformation process decimal delimeters will transferred to a point notation (comma → point). Then, the actual validation (pattern, value range, length range) is performed. At the conclusion rules can be checked for compliance. In Table 1 is a list of the various validators and its constraints to see.
+The framework is used for checking of data for correctness. Specifically data can be checked for correctness by means of regular expression and the value range or field length for strings. Additionally own validators can be written that can then define additional verifiable criteria (Derived classes of type Validator &lt;T&gt;). Validation is a maximum of three steps (Transformation → Validation → BusinessRule). When passing a string, the string is first transformed to the desired data type. During the transformation process decimal delimeters will transferred to a point notation (comma → point). Then, the actual validation (pattern, value range, length range) is performed. At the conclusion rules can be checked for compliance. In Table 1 is a list of the various validators and its constraints to see.
 
 Overview
 ========
