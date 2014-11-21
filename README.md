@@ -1,3 +1,8 @@
+Why a further validation framework?
+===================================
+
+Often these frameworks are conceptualized for Java Beans. Motivation for this project was that there is no simple for individual data types feasible valdiation for Java Swing applications. This framework is also particularly useful if it can not be determined a priori which types of data should be validated (Dynamic validation in combination with validation properties in JSON format). As an example can be called from database data validation here.
+
 Introduction
 ============
 
