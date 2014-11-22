@@ -81,7 +81,7 @@ Given are the constraints and the value which has to be checked. Using the Valid
 <pre><code>String constraints = "{ … }";
 String type = ValidatorFactory.parseType(constraints);
 
-Validator<?> v = ValidatorFactory.createValidator(type);
+Validator&lt;?&gt; v = ValidatorFactory.createValidator(type);
 v.setConstraints(constraints);
 
 v.validateString(value);</code></pre>
