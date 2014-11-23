@@ -65,7 +65,7 @@ Language Support for the output of error messages (currently German and English)
 Swing
 =====
 
-In Swing text fields can be validated at runtime using the Validation Document Filter class (see Fig. 1).
+In Swing text fields can be validated at runtime using the ValidationDocumentFilter class (see Fig. 1).
 
 <pre><code>StringValidator v = new StringValidator();
 v.setPattern("[A-Za-z]+");
