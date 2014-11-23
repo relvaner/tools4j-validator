@@ -51,7 +51,7 @@ public class StringValidator extends Validator<String> {
 		this.pattern = pattern;
 	}	
 	
-	public int getMin() {
+	public Integer getMin() {
 		return min;
 	}
 
@@ -59,7 +59,7 @@ public class StringValidator extends Validator<String> {
 		this.min = min;
 	}
 	
-	public int getMax() {
+	public Integer getMax() {
 		return max;
 	}
 	
