@@ -62,6 +62,22 @@ Language Support for the output of error messages (currently German and English)
 
 <pre><code>Validator.setViolationMessageLanguage("de");</code></pre>
 
+Swing
+=====
+
+In Swing text fields can be validated at runtime using the Validation Document Filter class (see Fig. 1).
+
+<pre><code>StringValidator v = new StringValidator();
+v.setPattern("[A-Za-z]+");
+
+TextField tf = new TextField("ABCD");
+AbstractDocument doc = (AbstractDocument) tf.getDocument();
+doc.setDocumentFilter(new ValidationDocumentFilter(window, v));</code></pre>
+
+![alt text](https://github.com/relvaner/tools4j-validator/blob/master/doc/images/ValidationDocumentFilter.jpg "ValidationDocumentFilter")
+
+Fig. 1: Validation of a text field with an error message.
+
 Dynamic Validation
 ==================
 A dynamic validation is made possible by the coding of validation properties in JSON format. Definition of validation properties to an integer field in JSON:
