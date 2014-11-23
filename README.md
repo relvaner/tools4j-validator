@@ -89,3 +89,37 @@ v.validateString(value);</code></pre>
 Validation properties in JSON syntax obtained by:
 
 <pre><code>v.getConstraintsAsJsonObject().toString();</code></pre>
+
+Business Rules
+==============
+
+In the following, the use of business rules will be explained with an example. In this example, the passed date of birth should be checked on a minimum age of 18 years (age of majority). First, a business rule is written to verify the age of majority and added to the Business Rules Manager (see below).
+
+<pre><code>BusinessRulesManager manager = new BusinessRulesManager();
+String id = manager.addRule(new BusinessRule<Calendar>() {
+	@Override
+	public boolean checkBusinessRule(Calendar value) {
+		// AdultCheck
+		Calendar now = Calendar.getInstance();
+		now.set(Calendar.YEAR, now.get(Calendar.YEAR)-18);
+				
+		return value.compareTo(now)<=0;
+	}
+});</code></pre>
+
+The next step is to apply a business rule for the validator is activated. This is done by adding the corresponding ID of the Business Rule and registering a handler for the business rule (here: DefaultBusinessRuleListener).
+
+<pre><code>DateValidator v = new DateValidator();
+v.setBusinessRuleID(id);
+v.setBusinessRuleListener(new DefaultBusinessRuleListener(manager));
+v.setPast(true);
+v.setPattern("dd.MM.yyyy");
+v.validateString("12.06.2004");
+
+System.out.println(v.getViolationMessage());
+System.out.println(v.getViolationConstraint());
+</code></pre>
+
+Error message:
+
+<pre><code>The input value is not compliant to rules  ("e6547675-19b2-4fcf-8631-133cd6b822da")!</code></pre>
