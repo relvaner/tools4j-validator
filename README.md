@@ -46,7 +46,7 @@ The input value "122" is not allowed ("[A-Za-z]+" expected)!
 System.out.println(v.getViolationConstraint());
 
 Pattern</code></pre>
-<b>Example of a IntegerValidator:</b>
+<b>Example of an IntegerValidator:</b>
 
 Validation with specifying a minimum, followed by validation and output an error message.
 <pre><code>IntegerValidator v = new IntegerValidator();
