@@ -78,6 +78,10 @@ doc.setDocumentFilter(new ValidationDocumentFilter(window, v));</code></pre>
 
 Fig. 1: Validation of a text field with an error message.
 
+As an alternative use an InputVerifier (here: ValidationInputVerifier):
+
+<pre><code>tf.setInputVerifier(new ValidationInputVerifier(window, v)); // TextField</code></pre>
+
 Dynamic Validation
 ==================
 A dynamic validation is made possible by the coding of validation properties in JSON format. Definition of validation properties to an integer field in JSON:
