@@ -56,4 +56,16 @@ public class ValidationInputVerifier extends InputVerifier {
 		
 		return result;
 	}
+	
+	public static boolean verify(Window window, Validator<?> validator, JComponent input) {
+		boolean result = true;
+		
+		if (input instanceof JTextField)
+			result = validator.validateString(window, ((JTextField)input).getText());
+		else if (input instanceof JComboBox<?>) {
+			result = validator.validateString(window, ((JComboBox<?>)input).getSelectedItem().toString());
+		}
+		
+		return result;
+	}
 }
