@@ -33,13 +33,13 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 
-import tools4j.validator.StringValidator;
+import tools4j.validator.Validator;
 
 public class ValidationInputVerifier extends InputVerifier {
 	protected Window window;
-	protected StringValidator validator;
+	protected Validator<?> validator;
 
-	public ValidationInputVerifier(Window window, StringValidator validator) {
+	public ValidationInputVerifier(Window window, Validator<?> validator) {
 		this.window = window;
 		this.validator = validator;
 	}
@@ -49,9 +49,9 @@ public class ValidationInputVerifier extends InputVerifier {
 		boolean result = true;
 		
 		if (input instanceof JTextField)
-			result = validator.validate(window, ((JTextField)input).getText());
+			result = validator.validateString(window, ((JTextField)input).getText());
 		else if (input instanceof JComboBox<?>) {
-			result = validator.validate(window, ((JComboBox<?>)input).getSelectedItem().toString());
+			result = validator.validateString(window, ((JComboBox<?>)input).getSelectedItem().toString());
 		}
 		
 		return result;
