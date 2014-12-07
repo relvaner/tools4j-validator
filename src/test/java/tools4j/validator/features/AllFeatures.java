@@ -30,6 +30,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import tools4j.validator.utils.features.DocumentFilterFeature;
+import tools4j.validator.utils.features.InputVerifierFeature;
+
 @RunWith(Suite.class)
 @SuiteClasses({ 
 	BasicFeature.class, 
@@ -48,7 +51,9 @@ import org.junit.runners.Suite.SuiteClasses;
 	BigIntegerFeature.class,
 	BigDecimalFeature.class,
 	BusinessRulesFeature.class,
-	DynamicValidationFeature.class
+	DynamicValidationFeature.class,
+	DocumentFilterFeature.class,
+	InputVerifierFeature.class
 })
 public class AllFeatures {
 
