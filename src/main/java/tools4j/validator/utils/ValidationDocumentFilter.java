@@ -28,6 +28,8 @@ package tools4j.validator.utils;
 
 import java.awt.Window;
 
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
@@ -37,10 +39,26 @@ import tools4j.validator.Validator;
 public class ValidationDocumentFilter extends DocumentFilter {
 	protected Window window;
 	protected Validator<?> validator;
+	protected JComponent input;
+	protected JComponent output;
 	
 	public ValidationDocumentFilter(Window window, Validator<?> validator) {
 		this.window = window;
 		this.validator = validator;
+	}
+	
+	public ValidationDocumentFilter(Validator<?> validator, JComponent input, JComponent output) {
+		this.validator = validator;
+		this.input = input;
+		this.output = output;
+	}
+	
+	protected void notifyOutput(boolean success) {
+		if (output instanceof JLabel)
+			if (!success)
+				((JLabel)output).setText((input.getName()!=null ? input.getName()+": " : "")+validator.getViolationMessage());
+			else
+				((JLabel)output).setText("");
 	}
 	
 	@Override
@@ -48,8 +66,13 @@ public class ValidationDocumentFilter extends DocumentFilter {
 		String content = fb.getDocument().getText(0, fb.getDocument().getLength());
 		String string  = content.substring(offset, offset+length);
 		super.remove(fb, offset, length);
-		if (!validator.validateString(window, fb.getDocument().getText(0, fb.getDocument().getLength())))
+		
+		boolean success;
+		if (!(success=validator.validateString(window, fb.getDocument().getText(0, fb.getDocument().getLength()))))
 			super.insertString(fb, offset, string, null);
+		
+		if (output!=null)
+			notifyOutput(success);
 	}
 	            
 	@Override
@@ -68,8 +91,12 @@ public class ValidationDocumentFilter extends DocumentFilter {
 		
 		super.insertString(fb, offset, string, attr);
 		
-		if (!validator.validateString(window, sb.toString()))
+		boolean success;
+		if (!(success=validator.validateString(window, sb.toString())))
 			super.remove(fb, offset, string.length());
+		
+		if (output!=null)
+			notifyOutput(success);
 	}
 	
 	@Override

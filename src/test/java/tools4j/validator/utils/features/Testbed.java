@@ -37,7 +37,16 @@ import tools4j.validator.DoubleValidator;
 import tools4j.validator.StringValidator;
 import tools4j.validator.utils.ValidationDocumentFilter;
 import tools4j.validator.utils.ValidationInputVerifier;
+import tools4j.validator.utils.ValidationLabel;
+
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.border.EtchedBorder;
+import javax.swing.SwingConstants;
+
+import java.awt.BorderLayout;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 public class Testbed extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -45,6 +54,9 @@ public class Testbed extends JFrame{
 	private JPanel contentPane;
 	private JTextField tfDocumentFilter;
 	private JTextField tfInputVerifier;
+	private JLabel lblViolationMessage;
+	private JTextField tfDocumentFilter_Output;
+	private JTextField tfInputVerifier_Output;
 
 	/**
 	 * Launch the application.
@@ -65,14 +77,7 @@ public class Testbed extends JFrame{
 	 * Create the application.
 	 */
 	public Testbed() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 479, 184);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		getContentPane().setLayout(null);
@@ -101,6 +106,47 @@ public class Testbed extends JFrame{
 		btnInputVerifier.setName("btnInputVerifier");
 		btnInputVerifier.setBounds(117, 63, 89, 23);
 		contentPane.add(btnInputVerifier);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel.setBounds(10, 104, 431, 30);
+		contentPane.add(panel);
+		panel.setLayout(new BorderLayout(0, 0));
+		
+		lblViolationMessage = new ValidationLabel();
+		lblViolationMessage.setName("lblViolationMessage");
+		lblViolationMessage.setHorizontalAlignment(SwingConstants.LEFT);
+		panel.add(lblViolationMessage);
+		
+		tfDocumentFilter_Output = new JTextField();
+		tfDocumentFilter_Output.setName("tfDocumentFilter_Output");
+		tfDocumentFilter_Output.setBounds(256, 21, 86, 20);
+		contentPane.add(tfDocumentFilter_Output);
+		tfDocumentFilter_Output.setColumns(10);
+		doc = (AbstractDocument)tfDocumentFilter_Output.getDocument();
+		doc.setDocumentFilter(new ValidationDocumentFilter(documentFilterValidator, tfDocumentFilter_Output, lblViolationMessage));
+		tfDocumentFilter_Output.addFocusListener(new FocusListener() {
+			@Override
+			public void focusGained(FocusEvent e) {
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				lblViolationMessage.setText("");
+			}
+		});
+		
+		tfInputVerifier_Output = new JTextField();
+		tfInputVerifier_Output.setName("tfInputVerifier_Output");
+		tfInputVerifier_Output.setBounds(256, 64, 86, 20);
+		contentPane.add(tfInputVerifier_Output);
+		tfInputVerifier_Output.setColumns(10);
+		tfInputVerifier_Output.setInputVerifier(new ValidationInputVerifier(inputVerifierValidator, lblViolationMessage));
+		
+		JButton btnInputVerifier_Output = new JButton("Okay");
+		btnInputVerifier_Output.setName("btnInputVerifier_Output");
+		btnInputVerifier_Output.setBounds(352, 63, 89, 23);
+		contentPane.add(btnInputVerifier_Output);
 		
 		setVisible(true);
 	}

@@ -31,6 +31,7 @@ import java.awt.Window;
 import javax.swing.InputVerifier;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import tools4j.validator.Validator;
@@ -38,14 +39,24 @@ import tools4j.validator.Validator;
 public class ValidationInputVerifier extends InputVerifier {
 	protected Window window;
 	protected Validator<?> validator;
+	protected JComponent output;
 
 	public ValidationInputVerifier(Window window, Validator<?> validator) {
 		this.window = window;
 		this.validator = validator;
 	}
 	
+	public ValidationInputVerifier(Validator<?> validator, JComponent output) {
+		this.validator = validator;
+		this.output = output;
+	}
+	
 	@Override
 	public boolean verify(JComponent input) {
+		return ValidationInputVerifier.verify(window, validator, input, output);
+	}
+	
+	protected static boolean verify(Window window, Validator<?> validator, JComponent input, JComponent output) {
 		boolean result = true;
 		
 		if (input instanceof JTextField)
@@ -53,19 +64,22 @@ public class ValidationInputVerifier extends InputVerifier {
 		else if (input instanceof JComboBox<?>) {
 			result = validator.validateString(window, ((JComboBox<?>)input).getSelectedItem().toString());
 		}
+		
+		if (output!=null)
+			if (output instanceof JLabel)
+				if (!result)
+					((JLabel)output).setText((input.getName()!=null ? input.getName()+": " : "")+validator.getViolationMessage());
+				else
+					((JLabel)output).setText("");
 		
 		return result;
 	}
 	
 	public static boolean verify(Window window, Validator<?> validator, JComponent input) {
-		boolean result = true;
-		
-		if (input instanceof JTextField)
-			result = validator.validateString(window, ((JTextField)input).getText());
-		else if (input instanceof JComboBox<?>) {
-			result = validator.validateString(window, ((JComboBox<?>)input).getSelectedItem().toString());
-		}
-		
-		return result;
+		return ValidationInputVerifier.verify(window, validator, input, null);
+	}
+	
+	protected static boolean verify(Validator<?> validator, JComponent input, JComponent output) {
+		return ValidationInputVerifier.verify(null, validator, input, output);
 	}
 }

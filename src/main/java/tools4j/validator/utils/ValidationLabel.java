@@ -24,59 +24,18 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package tools4j.validator.utils.features;
+package tools4j.validator.utils;
 
-//import static org.junit.Assert.*;
+import java.awt.Color;
 
-import static org.junit.Assert.assertTrue;
+import javax.swing.JLabel;
 
-import java.awt.event.KeyEvent;
-import java.util.Locale;
-
-import org.fest.swing.fixture.FrameFixture;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-public class DocumentFilterFeature {
+public class ValidationLabel extends JLabel {
+	private static final long serialVersionUID = 8200582943610301540L;
 	
-	protected FrameFixture testbed;
-
-	@Before
-	public void before() {
-		Locale.setDefault(Locale.ENGLISH);
+	public ValidationLabel() {
+		super();
 		
-		testbed = new FrameFixture(new Testbed());
-	}
-	
-	@After
-	public void tearDown() {
-		testbed.cleanUp();
-	}
-	
-	@Test
-	public void documentFilter_valid() {
-		testbed.textBox("tfDocumentFilter").enterText("65.23");
-		testbed.textBox("tfDocumentFilter").requireText("65.23");
-	}
-	
-	@Test
-	public void documentFilter_invalid() {
-		testbed.textBox("tfDocumentFilter").enterText("65.23a");
-		testbed.optionPane().pressKey(KeyEvent.VK_ENTER);
-		testbed.textBox("tfDocumentFilter").requireText("65.23"); // reset to 65.23
-	}
-	
-	@Test
-	public void documentFilter_Output_valid() {
-		testbed.textBox("tfDocumentFilter_Output").enterText("65.23");
-		testbed.textBox("tfDocumentFilter_Output").requireText("65.23");
-	}
-	
-	@Test
-	public void documentFilter_Output_invalid() {
-		testbed.textBox("tfDocumentFilter_Output").enterText("65.23a");
-		testbed.textBox("tfDocumentFilter_Output").requireText("65.23"); // reset to 65.23
-		assertTrue(testbed.label("lblViolationMessage").text().length()>0);
+		this.setForeground(Color.RED);
 	}
 }

@@ -26,7 +26,7 @@
  */
 package tools4j.validator.utils.features;
 
-//import static org.junit.Assert.*;
+import static org.junit.Assert.*;
 
 import java.awt.event.KeyEvent;
 import java.util.Locale;
@@ -65,5 +65,20 @@ public class InputVerifierFeature {
 		testbed.button("btnInputVerifier").click();
 		testbed.optionPane().pressKey(KeyEvent.VK_ENTER);
 		testbed.textBox("tfInputVerifier").requireFocused(); // doesn't lose focus
+	}
+	
+	@Test
+	public void inputVerifier_Output_valid() {
+		testbed.textBox("tfInputVerifier_Output").enterText("ABC");
+		testbed.textBox("tfDocumentFilter_Output").focus();
+		testbed.textBox("tfDocumentFilter_Output").requireFocused();
+	}
+	
+	@Test
+	public void inputVerifier_Output_invalid() {
+		testbed.textBox("tfInputVerifier_Output").enterText("ABC4");
+		testbed.button("btnInputVerifier_Output").click();
+		testbed.textBox("tfInputVerifier_Output").requireFocused(); // doesn't lose focus
+		assertTrue(testbed.label("lblViolationMessage").text().length()>0);
 	}
 }
