@@ -86,7 +86,7 @@ As an alternative use an InputVerifier (here: ValidationInputVerifier):
 
 You can redirect the ViolationMessage also to a ValidationLabel (output):
 
-<pre><code>doc.setDocumentFilter(new ValidationDocumentFilter(v, output));</code></pre>
+<pre><code>doc.setDocumentFilter(new ValidationDocumentFilter(v, tf, output));</code></pre>
 
 or
 
