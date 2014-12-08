@@ -82,6 +82,16 @@ As an alternative use an InputVerifier (here: ValidationInputVerifier):
 
 <pre><code>tf.setInputVerifier(new ValidationInputVerifier(window, v)); // TextField</code></pre>
 
+---
+
+You can redirect the ViolationMessage also to a ValidationLabel (output):
+
+<pre><code>doc.setDocumentFilter(new ValidationDocumentFilter(v, output));</code></pre>
+
+or
+
+<pre><code>tf.setInputVerifier(new ValidationInputVerifier(v, output)); // TextField</code></pre>
+
 Dynamic Validation
 ==================
 A dynamic validation is made possible by the coding of validation properties in JSON format. Definition of validation properties to an integer field in JSON:
