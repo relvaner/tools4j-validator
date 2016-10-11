@@ -1,7 +1,7 @@
 Why another validation framework?
 =================================
 
-Validation frameworks are often conceptualized for Java Beans. Motivation for this project was, that there is no simple solution in circulation, for validating individual data types of Java Swing applications. This framework is also particularly useful, if it can not be determined a priori, which types of data should be validated (Dynamic validation in combination with validation properties in JSON format). Especially when you want to define validation constraints separated from business logic.
+Validation frameworks are often conceptualized for Java Beans. Motivation for this project was, that there is no simple solution in cycle, for validating individual data types of Java Swing applications. This framework is also particularly useful, if it can not be determined a priori, which types of data should be validated (dynamic validation in combination with validation properties in JSON format). It is especially useful when you want to define validation constraints separated from business logic.
 
 Introduction
 ============
@@ -78,7 +78,7 @@ doc.setDocumentFilter(new ValidationDocumentFilter(window, v));</code></pre>
 
 Fig. 1: Validation of a text field with an error message shown.
 
-As an alternative, use an InputVerifier (here: ValidationInputVerifier):
+As an alternative, use an InputVerifier (here: ValidationInputVerifier) instead:
 
 <pre><code>tf.setInputVerifier(new ValidationInputVerifier(window, v)); // TextField</code></pre>
 
@@ -94,7 +94,7 @@ or
 
 Dynamic Validation
 ==================
-A dynamic validation is made possible by coding the validation properties in JSON format. Definition of validation properties of an integer field in JSON:
+A dynamic validation is made possible by coding the validation properties in JSON format. Definition of validation properties for an integer field in JSON:
 
 <pre><code>{
     "type": "Integer",
