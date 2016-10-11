@@ -1,12 +1,12 @@
-Why an another validation framework?
-====================================
+Why another validation framework?
+=================================
 
-Often these frameworks are conceptualized for Java Beans. Motivation for this project was, that there is no simple solution in circulation, for validating individual data types of Java Swing applications. This framework is also particularly useful, if it can not be determined a priori, which types of data should be validated (Dynamic validation in combination with validation properties in JSON format). Especially when you want to define validation constraints seperated from business logic.
+Validation frameworks are often conceptualized for Java Beans. Motivation for this project was, that there is no simple solution in circulation, for validating individual data types of Java Swing applications. This framework is also particularly useful, if it can not be determined a priori, which types of data should be validated (Dynamic validation in combination with validation properties in JSON format). Especially when you want to define validation constraints separated from business logic.
 
 Introduction
 ============
 
-The framework is used for checking the data for correctness. Specifically data can be checked for correctness by means of regular expression and the value range or field length for strings. Additionally own validators can be written, that can then define additional verifiable criteria (Derived classes of type Validator &lt;T&gt;). Validation is a maximum of three steps (Transformation → Validation → BusinessRule). When passing a string, the string is first transformed to the desired data type. During the transformation process, decimal delimeters will transferred to a point notation (comma → point). Then, the actual validation (pattern, value range, length range) is performed. At the conclusion, rules can be checked for compliance. In Table 1 is a list of the various validators and its constraints to see.
+The framework is used for checking the data for correctness. Specifically data can be checked for correctness by means of regular expression and the value range or field length for strings. Additionally own validators can be written, that can then define additional verifiable criteria (derived classes of type Validator &lt;T&gt;). Validation is a maximum of three steps (Transformation → Validation → BusinessRule). When passing a string, the string is first transformed to the desired data type. During the transformation process, decimal delimiters will transferred to a point notation (comma → point). Then, the actual validation (pattern, value range, length range) is performed. At the conclusion, rules can be checked for compliance. In Table 1 is a list of the various validators and its constraints to see.
 
 Overview
 ========
@@ -33,7 +33,7 @@ Examples
 ========
 <b>Example of a StringValidator:</b>
 
-Validation with a pattern, followed by the validation and output of an error message and the type of error message.
+Validation with a pattern, followed by the validation and an output of an error message and the type of an error message.
 <pre><code>StringValidator v = new StringValidator();
 v.setPattern("[A-Za-z]+");
 
@@ -48,7 +48,7 @@ System.out.println(v.getViolationConstraint());
 Pattern</code></pre>
 <b>Example of an IntegerValidator:</b>
 
-Validation with specifying a minimum, followed by the validation and output of an error message.
+Validation with specifying a minimum, followed by the validation and an output of an error message.
 <pre><code>IntegerValidator v = new IntegerValidator();
 v.setMin(25);
 
@@ -76,7 +76,7 @@ doc.setDocumentFilter(new ValidationDocumentFilter(window, v));</code></pre>
 
 ![alt text](https://github.com/relvaner/tools4j-validator/blob/master/doc/images/ValidationDocumentFilter.jpg "ValidationDocumentFilter")
 
-Fig. 1: Validation of a text field with an error message.
+Fig. 1: Validation of a text field with an error message shown.
 
 As an alternative, use an InputVerifier (here: ValidationInputVerifier):
 
@@ -94,7 +94,7 @@ or
 
 Dynamic Validation
 ==================
-A dynamic validation is made possible by the coding of validation properties in JSON format. Definition of validation properties to an integer field in JSON:
+A dynamic validation is made possible by coding the validation properties in JSON format. Definition of validation properties of an integer field in JSON:
 
 <pre><code>{
     "type": "Integer",
