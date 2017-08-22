@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/relvaner/tools4j-validator.svg?branch=master)](https://travis-ci.org/relvaner/tools4j-validator)
 [![Coverage Status](https://coveralls.io/repos/github/relvaner/tools4j-validator/badge.svg?branch=master)](https://coveralls.io/github/relvaner/tools4j-validator?branch=master)
-[Note: Coverage under Windows 91,5%]
+[Note: Coverage under Windows 85,7%]
 
 Why another validation framework?
 =================================
