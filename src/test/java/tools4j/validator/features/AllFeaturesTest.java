@@ -54,6 +54,6 @@ import tools4j.validator.utils.features.InputVerifierFeature;
 	DocumentFilterFeature.class,
 	InputVerifierFeature.class
 })
-public class AllFeatures {
+public class AllFeaturesTest {
 
 }
