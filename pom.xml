@@ -41,34 +41,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       		<name>David A. Bauer</name>
    		 </developer>
     </developers>
-    
-    <build>
-		<plugins>
-			<plugin>
-       			<groupId>org.apache.maven.plugins</groupId>
-        		<artifactId>maven-assembly-plugin</artifactId>
-        		<version>2.6</version>
-        		<configuration>
-        			<descriptorRefs>
-            			<descriptorRef>bin</descriptorRef>
-          			</descriptorRefs>
-              		<jarName>${project.artifactId}-${project.version}</jarName>
-              		<includes>
-                		<include>META-INF/LICENSE.txt</include>
-              		</includes>
-            	</configuration>
-        		<executions>
-          			<execution>
-            			<id>make-assembly</id>
-            			<phase>package</phase>
-            			<goals>
-              				<goal>single</goal>
-            			</goals>
-          			</execution>
-        		</executions>
-    		</plugin>
-    	</plugins>
-    </build>
           
 	<dependencies>
 		<dependency>
