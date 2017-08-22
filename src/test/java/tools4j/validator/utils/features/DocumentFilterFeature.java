@@ -29,6 +29,7 @@ package tools4j.validator.utils.features;
 //import static org.junit.Assert.*;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assume.assumeTrue;
 
 import java.awt.event.KeyEvent;
 import java.util.Locale;
@@ -44,6 +45,8 @@ public class DocumentFilterFeature {
 
 	@Before
 	public void before() {
+		assumeTrue(System.getProperty("os.name").startsWith("Windows"));
+		
 		Locale.setDefault(Locale.ENGLISH);
 		
 		testbed = new FrameFixture(new Testbed());
