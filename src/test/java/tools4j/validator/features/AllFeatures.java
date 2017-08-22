@@ -28,13 +28,12 @@ package tools4j.validator.features;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 
 import tools4j.validator.utils.features.DocumentFilterFeature;
 import tools4j.validator.utils.features.InputVerifierFeature;
 
 @RunWith(Suite.class)
-@SuiteClasses({ 
+@Suite.SuiteClasses({ 
 	BasicFeature.class, 
 	StringFeature.class,
 	EmailFeature.class,
