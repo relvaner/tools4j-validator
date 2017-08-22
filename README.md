@@ -1,3 +1,5 @@
+<img src="https://travis-ci.org/relvaner/tools4j-validator.svg?branch=master"/>
+
 Why another validation framework?
 =================================
 
