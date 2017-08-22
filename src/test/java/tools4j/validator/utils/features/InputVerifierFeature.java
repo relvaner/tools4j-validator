@@ -27,7 +27,6 @@
 package tools4j.validator.utils.features;
 
 import static org.junit.Assert.*;
-import static org.junit.Assume.assumeTrue;
 
 import java.awt.event.KeyEvent;
 import java.util.Locale;
@@ -40,48 +39,56 @@ import org.junit.Test;
 public class InputVerifierFeature {
 	
 	protected FrameFixture testbed;
-
+	
 	@Before
 	public void before() {
-		assumeTrue(System.getProperty("os.name").startsWith("Windows"));
-		
 		Locale.setDefault(Locale.ENGLISH);
 		
-		testbed = new FrameFixture(new Testbed());
+		if (System.getProperty("os.name").startsWith("Windows"))
+			testbed = new FrameFixture(new Testbed());
 	}
 	
 	@After
 	public void tearDown() {
-		testbed.cleanUp();
+		if (testbed!=null)
+			testbed.cleanUp();
 	}
 	
 	@Test
 	public void inputVerifier_valid() {
-		testbed.textBox("tfInputVerifier").enterText("ABC");
-		testbed.textBox("tfDocumentFilter").focus();
-		testbed.textBox("tfDocumentFilter").requireFocused();
+		if (testbed!=null) {
+			testbed.textBox("tfInputVerifier").enterText("ABC");
+			testbed.textBox("tfDocumentFilter").focus();
+			testbed.textBox("tfDocumentFilter").requireFocused();
+		}
 	}
 	
 	@Test
 	public void inputVerifier_invalid() {
-		testbed.textBox("tfInputVerifier").enterText("ABC4");
-		testbed.button("btnInputVerifier").click();
-		testbed.optionPane().pressKey(KeyEvent.VK_ENTER);
-		testbed.textBox("tfInputVerifier").requireFocused(); // doesn't lose focus
+		if (testbed!=null) {
+			testbed.textBox("tfInputVerifier").enterText("ABC4");
+			testbed.button("btnInputVerifier").click();
+			testbed.optionPane().pressKey(KeyEvent.VK_ENTER);
+			testbed.textBox("tfInputVerifier").requireFocused(); // doesn't lose focus
+		}
 	}
 	
 	@Test
 	public void inputVerifier_Output_valid() {
-		testbed.textBox("tfInputVerifier_Output").enterText("ABC");
-		testbed.textBox("tfDocumentFilter_Output").focus();
-		testbed.textBox("tfDocumentFilter_Output").requireFocused();
+		if (testbed!=null) {
+			testbed.textBox("tfInputVerifier_Output").enterText("ABC");
+			testbed.textBox("tfDocumentFilter_Output").focus();
+			testbed.textBox("tfDocumentFilter_Output").requireFocused();
+		}
 	}
 	
 	@Test
 	public void inputVerifier_Output_invalid() {
-		testbed.textBox("tfInputVerifier_Output").enterText("ABC4");
-		testbed.button("btnInputVerifier_Output").click();
-		testbed.textBox("tfInputVerifier_Output").requireFocused(); // doesn't lose focus
-		assertTrue(testbed.label("lblViolationMessage").text().length()>0);
+		if (testbed!=null) {
+			testbed.textBox("tfInputVerifier_Output").enterText("ABC4");
+			testbed.button("btnInputVerifier_Output").click();
+			testbed.textBox("tfInputVerifier_Output").requireFocused(); // doesn't lose focus
+			assertTrue(testbed.label("lblViolationMessage").text().length()>0);
+		}
 	}
 }
