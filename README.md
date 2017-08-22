@@ -1,4 +1,5 @@
 <img src="https://travis-ci.org/relvaner/tools4j-validator.svg?branch=master"/>
+[![Coverage Status](https://coveralls.io/repos/github/relvaner/tools4j-validator/badge.svg?branch=master)](https://coveralls.io/github/relvaner/tools4j-validator?branch=master)
 
 Why another validation framework?
 =================================
