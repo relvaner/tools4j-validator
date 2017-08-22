@@ -12,6 +12,8 @@
 Why another validation framework?
 =================================
 
+[![Coverage Status](https://coveralls.io/repos/github/relvaner/tools4j-validator/badge.svg?branch=master)](https://coveralls.io/github/relvaner/tools4j-validator?branch=master)
+
 Validation frameworks are often conceptualized for Java Beans. Motivation for this project was, that there is no simple solution in cycle, for validating individual data types of Java Swing applications. This framework is also particularly useful, if it can not be determined a priori, which types of data should be validated (dynamic validation in combination with validation properties in JSON format). It is especially useful when you want to define validation constraints separated from business logic.
 
 Introduction
