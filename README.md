@@ -1,5 +1,13 @@
-<img src="https://travis-ci.org/relvaner/tools4j-validator.svg?branch=master"/>
-<img src="https://coveralls.io/repos/github/relvaner/tools4j-validator/badge.svg?branch=master"/>(Coverage under Windows 91,5%)
+<table cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td><img src="https://travis-ci.org/relvaner/tools4j-validator.svg?branch=master"/></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><img src="https://coveralls.io/repos/github/relvaner/tools4j-validator/badge.svg?branch=master"/></td>
+		<td>(Coverage under Windows 91,5%)</td>
+	</tr>
+</table>
 
 Why another validation framework?
 =================================
