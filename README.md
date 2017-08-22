@@ -130,7 +130,7 @@ Business Rules
 In the following, the use of business rules will be explained with an example. In this example, the passed date of birth should be checked on a minimum age of 18 years (age of majority). First, a business rule is written to verify the age of majority and added to the Business Rules Manager (see below).
 
 <pre><code>BusinessRulesManager manager = new BusinessRulesManager();
-String id = manager.addRule(new BusinessRule<Calendar>() {
+String id = manager.addRule("AdultCheck", new BusinessRule<Calendar>() {
 	@Override
 	public boolean checkBusinessRule(Calendar value) {
 		// AdultCheck
@@ -156,4 +156,4 @@ System.out.println(v.getViolationConstraint());
 
 Error message:
 
-<pre><code>The input value is not compliant to rules  ("e6547675-19b2-4fcf-8631-133cd6b822da")!</code></pre>
+<pre><code>The input value is not compliant to rules  ("AdultCheck")!</code></pre>

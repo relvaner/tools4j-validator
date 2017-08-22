@@ -1,6 +1,6 @@
 /*
  * tools4j-validator - Framework for Validation
- * Copyright (c) 2014, David A. Bauer
+ * Copyright (c) 2014-2017, David A. Bauer
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -26,19 +26,21 @@
  */
 package tools4j.validator;
 
-public class DefaultBusinessRuleListener implements BusinessRuleListener {
-	protected BusinessRulesManager manager;
+public class BusinessRuleTuple {
+	protected final String name;
+	protected final BusinessRule<?> rule;
 	
-	public DefaultBusinessRuleListener(BusinessRulesManager manager) {
-		this.manager = manager;
+	public String getName() {
+		return name;
 	}
 	
-	public String getBusinessRuleName(Validator<?> validator) {
-		return manager.getRuleName(validator.getBusinessRuleID());
+	public BusinessRule<?> getRule() {
+		return rule;
 	}
-	
-	@Override
-	public boolean checkBusinessRule(Validator<?> validator) {
-		return manager.checkBusinessRule(validator.getBusinessRuleID(), validator.getValue());
+
+	public BusinessRuleTuple(String name, BusinessRule<?> rule) {
+		super();
+		this.name = name;
+		this.rule = rule;
 	}
 }

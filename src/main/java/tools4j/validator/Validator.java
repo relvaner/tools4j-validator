@@ -214,8 +214,12 @@ public abstract class Validator<T> {
 				result = businessRuleListener.checkBusinessRule(this);
 				if (!result) {
 					violationConstraint = "Rule";
-					if (businessRuleID!=null)
-						violationMessage = String.format(violationMessageResource.getString("STR_RULE2"), businessRuleID);
+					if (businessRuleID!=null) {
+						String businessRuleName = null;
+						if (businessRuleListener instanceof DefaultBusinessRuleListener)
+							businessRuleName = ((DefaultBusinessRuleListener)businessRuleListener).getBusinessRuleName(this);
+						violationMessage = String.format(violationMessageResource.getString("STR_RULE2"), businessRuleName!=null ? businessRuleName : businessRuleID);
+					}
 					else
 						violationMessage = String.format(violationMessageResource.getString("STR_RULE"));
 					showViolationDialog(window);
