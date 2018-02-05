@@ -173,30 +173,30 @@ public class StringValidator extends Validator<String> {
 		while (parser.hasNext()) {
 			 Event e = parser.next();
 			 if (e == Event.KEY_NAME)
-				 if (parser.getString().equals("constraint")) {
+				 if (parser.getString().equalsIgnoreCase("constraint")) {
 					 parser.next();
-					 if (parser.getString().equals("Pattern")) {
+					 if (parser.getString().equalsIgnoreCase("Pattern")) {
 						 parser.next();
 						 parser.next();
 						 setPattern(parser.getString());
 					 }
-					 else if (parser.getString().equals("NotEmpty")) {
+					 else if (parser.getString().equalsIgnoreCase("NotEmpty")) {
 						 setNotEmpty(true);
 					 }
-					 else if (parser.getString().equals("Empty")) {
+					 else if (parser.getString().equalsIgnoreCase("Empty")) {
 						 setEmpty(true);
 					 }
-					 else if (parser.getString().equals("Min")) {
+					 else if (parser.getString().equalsIgnoreCase("Min")) {
 						 parser.next();
 						 parser.next();
 						 setMin(parser.getInt());
 					 }
-					 else if (parser.getString().equals("Max")) {
+					 else if (parser.getString().equalsIgnoreCase("Max")) {
 						 parser.next();
 						 parser.next();
 						 setMax(parser.getInt());
 					 }
-					 else if (parser.getString().equals("Size")) {
+					 else if (parser.getString().equalsIgnoreCase("Size")) {
 						 parser.next();
 						 parser.next();
 						 setMin(parser.getInt());

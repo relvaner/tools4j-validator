@@ -71,9 +71,9 @@ public class PickListValidator extends StringValidator {
 		while (parser.hasNext()) {
 			 Event e = parser.next();
 			 if (e == Event.KEY_NAME)
-				 if (parser.getString().equals("constraint")) {
+				 if (parser.getString().equalsIgnoreCase("constraint")) {
 					 parser.next();
-					 if (parser.getString().equals("List")) {
+					 if (parser.getString().equalsIgnoreCase("List")) {
 						 parser.next();
 						 
 						 pickList = new HashSet<>();

@@ -158,34 +158,34 @@ public abstract class NumberValidator<T extends Number & Comparable<T>> extends 
 		while (parser.hasNext()) {
 			 Event e = parser.next();
 			 if (e == Event.KEY_NAME)
-				 if (parser.getString().equals("constraint")) {
+				 if (parser.getString().equalsIgnoreCase("constraint")) {
 					 parser.next();
-					 if (parser.getString().equals("Min")) {
+					 if (parser.getString().equalsIgnoreCase("Min")) {
 						 parser.next();
 						 parser.next();
 						 setMin(getNumber(parser.getBigDecimal()));
 						 e = parser.next();
-						 if (e != Event.END_OBJECT && parser.getString().equals("minIncluded")) {
+						 if (e != Event.END_OBJECT && parser.getString().equalsIgnoreCase("minIncluded")) {
 							 parser.next();
 							 setMinIncluded(parser.getInt()==1);
 						 }
 					 }
-					 else if (parser.getString().equals("Max")) {
+					 else if (parser.getString().equalsIgnoreCase("Max")) {
 						 parser.next();
 						 parser.next();
 						 setMax(getNumber(parser.getBigDecimal()));
 						 e = parser.next();
-						 if (e != Event.END_OBJECT && parser.getString().equals("maxIncluded")) {
+						 if (e != Event.END_OBJECT && parser.getString().equalsIgnoreCase("maxIncluded")) {
 							 parser.next();
 							 setMaxIncluded(parser.getInt()==1);
 						 }
 					 }
-					 else if (parser.getString().equals("Range")) {
+					 else if (parser.getString().equalsIgnoreCase("Range")) {
 						 parser.next();
 						 parser.next();
 						 setMin(getNumber(parser.getBigDecimal()));
 						 e = parser.next();
-						 if (e != Event.END_OBJECT && parser.getString().equals("minIncluded")) {
+						 if (e != Event.END_OBJECT && parser.getString().equalsIgnoreCase("minIncluded")) {
 							 parser.next();
 							 setMinIncluded(parser.getInt()==1);
 							 parser.next();
@@ -193,7 +193,7 @@ public abstract class NumberValidator<T extends Number & Comparable<T>> extends 
 						 parser.next();
 						 setMax(getNumber(parser.getBigDecimal()));
 						 e = parser.next();
-						 if (e != Event.END_OBJECT && parser.getString().equals("maxIncluded")) {
+						 if (e != Event.END_OBJECT && parser.getString().equalsIgnoreCase("maxIncluded")) {
 							 parser.next();
 							 setMaxIncluded(parser.getInt()==1);
 						 }

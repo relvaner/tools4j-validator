@@ -159,17 +159,17 @@ public class DateValidator extends Validator<Calendar> {
 		while (parser.hasNext()) {
 			 Event e = parser.next();
 			 if (e == Event.KEY_NAME)
-				 if (parser.getString().equals("constraint")) {
+				 if (parser.getString().equalsIgnoreCase("constraint")) {
 					 parser.next();
-					 if (parser.getString().equals("Pattern")) {
+					 if (parser.getString().equalsIgnoreCase("Pattern")) {
 						 parser.next();
 						 parser.next();
 						 setPattern(parser.getString());
-					 } else if (parser.getString().equals("Valid")) {
+					 } else if (parser.getString().equalsIgnoreCase("Valid")) {
 						 setValid(true);
-					 } else if (parser.getString().equals("Past")) {
+					 } else if (parser.getString().equalsIgnoreCase("Past")) {
 						 setPast(true);
-					 } else if (parser.getString().equals("Future")) {
+					 } else if (parser.getString().equalsIgnoreCase("Future")) {
 						 setFuture(true);
 					 }
 				 }

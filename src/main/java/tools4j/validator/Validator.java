@@ -260,13 +260,13 @@ public abstract class Validator<T> {
 		while (parser.hasNext()) {
 			 Event e = parser.next();
 			 if (e == Event.KEY_NAME)
-				 if (parser.getString().equals("constraint")) {
+				 if (parser.getString().equalsIgnoreCase("constraint")) {
 					 parser.next();
-					 if (parser.getString().equals("NotNull")) {
+					 if (parser.getString().equalsIgnoreCase("NotNull")) {
 						 setNotNull(true);
-					 } else if (parser.getString().equals("Null")) {
+					 } else if (parser.getString().equalsIgnoreCase("Null")) {
 						 setNull(true);
-					 } else if (parser.getString().equals("Rule")) {
+					 } else if (parser.getString().equalsIgnoreCase("Rule")) {
 						 parser.next();
 						 parser.next();
 						 setBusinessRuleID(parser.getString());

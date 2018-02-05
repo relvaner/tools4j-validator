@@ -114,13 +114,13 @@ public class BooleanValidator extends Validator<Boolean> {
 		while (parser.hasNext()) {
 			Event e = parser.next();
 			if (e == Event.KEY_NAME)
-				if (parser.getString().equals("constraint")) {
+				if (parser.getString().equalsIgnoreCase("constraint")) {
 					parser.next();
-					if (parser.getString().equals("AssertTrue")) {
+					if (parser.getString().equalsIgnoreCase("AssertTrue")) {
 						setAssertTrue(true); 
 						break;
 					}
-					else if (parser.getString().equals("AssertFalse")) {
+					else if (parser.getString().equalsIgnoreCase("AssertFalse")) {
 						setAssertFalse(true);
 						break;
 					}

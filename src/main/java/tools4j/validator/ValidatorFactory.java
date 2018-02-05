@@ -37,20 +37,20 @@ public class ValidatorFactory {
 		Validator<?> result = null;
 		
 		if (name!=null)
-			switch (name.replace("Validator", "")) {
-				case "String":  	result = new StringValidator(); break;
-				case "Boolean": 	result = new BooleanValidator(); break;
-				case "Byte": 		result = new ByteValidator(); break;
-				case "Short": 		result = new ShortValidator(); break;
-				case "Integer": 	result = new IntegerValidator(); break;
-				case "Long": 		result = new LongValidator(); break;
-				case "Float":		result = new FloatValidator(); break;
-				case "Double": 		result = new DoubleValidator(); break;
-				case "BigInteger": 	result = new BigIntegerValidator(); break;
-				case "BigDecimal": 	result = new BigDecimalValidator(); break;
-				case "Date": 		result = new DateValidator(); break;
-				case "Email": 		result = new EmailValidator(); break;	
-				case "PickList": 	result = new PickListValidator(); break;
+			switch (name.toUpperCase().replace("VALIDATOR", "")) {
+				case "STRING":  	result = new StringValidator(); break;
+				case "BOOLEAN": 	result = new BooleanValidator(); break;
+				case "BYTE": 		result = new ByteValidator(); break;
+				case "SHORT": 		result = new ShortValidator(); break;
+				case "INTEGER": 	result = new IntegerValidator(); break;
+				case "LONG": 		result = new LongValidator(); break;
+				case "FLOAT":		result = new FloatValidator(); break;
+				case "DOUBLE": 		result = new DoubleValidator(); break;
+				case "BIGINTEGER": 	result = new BigIntegerValidator(); break;
+				case "BIGDECIMAL": 	result = new BigDecimalValidator(); break;
+				case "DATE": 		result = new DateValidator(); break;
+				case "EMAIL": 		result = new EmailValidator(); break;	
+				case "PICKLIST": 	result = new PickListValidator(); break;
 			}
 		
 		return result;
@@ -61,7 +61,7 @@ public class ValidatorFactory {
 		while (parser.hasNext()) {
 			 Event e = parser.next();
 			 if (e == Event.KEY_NAME)
-				 if (parser.getString().equals("type")) {
+				 if (parser.getString().equalsIgnoreCase("type")) {
 					 parser.next();
 					 return parser.getString();
 				 }
